@@ -1,159 +1,39 @@
-# Turborepo starter
+# Nibble
 
-This Turborepo starter is maintained by the Turborepo core team.
+**Nibble helps people make their mobile data bundles last longer.**
 
-## Using this example
+Nibble is an Android-first, Nigeria-first mobile data coaching app for people who use prepaid or limited data bundles. It aims to help users understand their data usage, set a bundle budget, estimate a sensible daily pace, and take practical steps before their data runs out.
 
-Run the following command:
+> **Project status:** Product direction agreed; implementation is minimal or not yet established. This documentation pack is a proposed source of truth to reconcile with the existing repository.
 
-```sh
-npx create-turbo@latest
-```
+## Product direction
 
-## What's inside?
+- **Agreed:** Data Coach — help users make their bundle last longer.
+- **Agreed:** Nigeria first, with a focus on local prepaid data bundles.
+- **Agreed:** Defer direct VPN blocking until the core product is validated.
+- **Agreed:** The existing monorepo has little implementation, so inspect it before making structural changes.
+- **Inherited from the original PRD, to confirm before release:** Android first; no account required for core value; free/ad-free model; usage data stays on the device.
 
-This Turborepo includes the following packages/apps:
+## Documentation
 
-### Apps and Packages
+- [Product definition](docs/product/PRODUCT.md)
+- [Revised product requirements](docs/product/PRD.md)
+- [Architecture proposal](docs/engineering/ARCHITECTURE.md)
+- [Privacy and permissions](docs/engineering/PRIVACY.md)
+- [Testing strategy](docs/engineering/TESTING.md)
+- [Roadmap and validation](docs/product/ROADMAP.md)
+- [Decision log](docs/decisions/DECISIONS.md)
+- [Coding-agent prompt](docs/prompts/IMPLEMENTATION_AGENT_PROMPT.md)
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `@next/eslint-plugin-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+## Important implementation principle
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+Do not start by implementing every feature in the original PRD. First inspect the repository, compare its actual state with these documents, identify any conflicts, and propose the smallest useful implementation plan. The core budget and pacing logic should be deterministic, testable, and usable offline.
 
-### Utilities
+## Documentation status labels
 
-This Turborepo has some additional tools already setup for you:
+- **AGREED** — explicitly chosen in the product discussion.
+- **INHERITED** — stated in the uploaded PRD, but should be reconfirmed if it affects implementation.
+- **PROPOSED** — a recommendation introduced in this revision, not yet approved.
+- **OPEN** — requires a decision, evidence, or a technical experiment.
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
-
-```sh
-cd my-turborepo
-turbo build
-```
-
-Without global `turbo`, use your package manager:
-
-```sh
-cd my-turborepo
-npx turbo build
-pnpm exec turbo build
-pnpm exec turbo build
-```
-
-You can build a specific package by using a [filter](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters):
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
-
-```sh
-turbo build --filter=docs
-```
-
-Without global `turbo`:
-
-```sh
-npx turbo build --filter=docs
-pnpm exec turbo build --filter=docs
-pnpm exec turbo build --filter=docs
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
-
-```sh
-cd my-turborepo
-turbo dev
-```
-
-Without global `turbo`, use your package manager:
-
-```sh
-cd my-turborepo
-npx turbo dev
-pnpm exec turbo dev
-pnpm exec turbo dev
-```
-
-You can develop a specific package by using a [filter](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters):
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
-
-```sh
-turbo dev --filter=web
-```
-
-Without global `turbo`:
-
-```sh
-npx turbo dev --filter=web
-pnpm exec turbo dev --filter=web
-pnpm exec turbo dev --filter=web
-```
-
-### Remote Caching
-
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
-
-Turborepo can use a technique known as [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
-
-```sh
-cd my-turborepo
-turbo login
-```
-
-Without global `turbo`, use your package manager:
-
-```sh
-cd my-turborepo
-npx turbo login
-pnpm exec turbo login
-pnpm exec turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
-
-```sh
-turbo link
-```
-
-Without global `turbo`:
-
-```sh
-npx turbo link
-pnpm exec turbo link
-pnpm exec turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turborepo.dev/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.dev/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.dev/docs/reference/configuration)
-- [CLI Usage](https://turborepo.dev/docs/reference/command-line-reference)
+Do not silently convert PROPOSED or OPEN items into requirements.
